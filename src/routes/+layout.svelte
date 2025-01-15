@@ -2,9 +2,7 @@
     import { page } from '$app/stores';
     import { afterUpdate } from 'svelte';
     let url = $page.url.pathname
-    afterUpdate(() => {
-        url = $page.url.pathname 
-    })
+    afterUpdate(() => url = $page.url.pathname)
     const menu = [
         {
             name: 'Home',
@@ -20,14 +18,18 @@
         }
     ]
 </script>
-
-{#each menu as item}
-    <a class={item.href === url ? 'active' : ''} href={item.href}>{item.name} ({item.href})</a>
-{/each}
+<div class="menu">
+    {#each menu as item}
+        <a class={item.href === url ? 'active' : ''} href={item.href}>{item.name} ({item.href})</a>
+    {/each}
+</div>
 <hr>
 <slot/>
 <hr>
 <style>
+    div.menu {
+        text-align: center;
+    }
     a {
         all: unset;
         margin: 5px;
