@@ -51,10 +51,11 @@
         border-radius: 15px;
         border: solid 1px black;
         text-align: center;
+        color: rgb(41, 81, 147);
     }
     div.menu {
         padding: 10px;
-        background-color: indigo;
+        background-color: rgb(130, 47, 189);
         text-align: center;
     }
     a {
