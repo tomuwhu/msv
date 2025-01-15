@@ -17,6 +17,7 @@
             href: '/cica'
         }
     ]
+    import './styles.css';
 </script>
 <div class="menu">
     {#each menu as item}
@@ -28,49 +29,3 @@
         <slot/>
     </div>
 </div>
-<style>
-    :global(html, body) {
-        margin: 0;
-        position: absolute;
-        top: 0;
-        bottom: 24px;
-        left: 0;
-        right: 0;
-    }
-    div.container {
-        float:inherit;
-        background-color: aqua;
-        margin: 0px;
-        padding: 5px;
-        height: 100%;
-    }
-    div.content {
-        background-color: whitesmoke;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 15px;
-        border: solid 1px black;
-        text-align: center;
-        color: rgb(41, 81, 147);
-    }
-    div.menu {
-        padding: 10px;
-        background-color: rgb(130, 47, 189);
-        text-align: center;
-    }
-    a {
-        all: unset;
-        margin: 5px;
-        padding: 5px;
-        border-radius: 5px;
-        cursor: pointer;
-        color: salmon;
-    }
-    a:hover {
-        color: hotpink;
-    }
-    a.active {
-        background-color: hotpink;
-        color: white;
-    }
-</style>
