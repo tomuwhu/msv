@@ -15,6 +15,10 @@
         {
             name: 'Cica',
             href: '/cica'
+        },
+        {   
+            name: 'Űrlap példa',
+            href: '/form'
         }
     ]
     import './styles.css';
