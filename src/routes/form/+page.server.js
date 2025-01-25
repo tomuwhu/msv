@@ -3,7 +3,7 @@ import * as auth from '$lib/server/auth';
 import { user } from '$lib/server/db/schema.js';
 
 export const load = (event) => {
-    if (!event.locals.user) {
+    if (!event?.locals?.user) {
         return {
             todolist: []
         }
@@ -18,6 +18,6 @@ export const actions = {
 		//console.log(locals)
         const data = await request.formData()
 		const x1 = data.get('x1')
-        todos.addTodo(locals.user.id, x1)
+        todos.addTodo(locals?.user?.id, x1)
 	}
 }
