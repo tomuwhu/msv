@@ -16,5 +16,5 @@ export const session = mysqlTable("session", {
 export const todos = mysqlTable("todos", {
     userId: varchar('user_id', { length: 255 }).notNull().references(() => user.id),
     todo: text('todo').notNull(),
-    date: datetime('date').notNull()
+    date: datetime('date').notNull().default(new Date())
 });

@@ -10,6 +10,6 @@ export async function getTodos(userId) {
 }
 
 export async function addTodo(userId, todo) {
-    const result = await db.insert(table.todos).values({ userId, todo })
+    const result = await db.insert(table.todos).values({ userId, todo, date:new Date() })
     return result
 }
