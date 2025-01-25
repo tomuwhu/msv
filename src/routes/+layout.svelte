@@ -21,7 +21,7 @@
 </script>
 <div class="menu">
     {#each menu as item}
-        <a class={item.href === url ? 'active' : ''} href={item.href}>{item.name} ({item.href})</a>
+        <a class={item.href === url || item.href+"/login" === url ? 'active' : ''} href={item.href}>{item.name} ({item.href})</a>
     {/each}
 </div>
 <div class="container">
