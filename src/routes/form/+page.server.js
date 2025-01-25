@@ -1,15 +1,16 @@
-var x = 1
-export const load = () => {
+import * as todos from '$lib/server/todos';
+import * as auth from '$lib/server/auth';
+
+export const load = (event) => {
     return {
-        cica: x
+        todolist: todos.getTodos(event.locals.user.id)
     }
 }
 export const actions = {
 	default: async ({ locals, request }) => {
-		console.log(locals)
+		//console.log(locals)
         const data = await request.formData()
 		const x1 = data.get('x1')
-        console.log(x1)
-        x++
+        todos.addTodo(locals.user.id, x1)
 	}
 }

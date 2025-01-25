@@ -12,3 +12,9 @@ export const session = mysqlTable("session", {
     userId: varchar('user_id', { length: 255 }).notNull().references(() => user.id),
     expiresAt: datetime('expires_at').notNull()
 });
+
+export const todos = mysqlTable("todos", {
+    id: serial('id').primaryKey(),
+    userId: varchar('user_id', { length: 255 }).notNull().references(() => user.id),
+    todo: text('todo').notNull()
+});
