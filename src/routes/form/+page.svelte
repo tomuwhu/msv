@@ -16,6 +16,7 @@
     }
     onMount(() => x())
 </script>
+{#if data.user}
 <h1>Todolist</h1>
 <form method="post">
     <input 
@@ -29,7 +30,9 @@
     <li>{item.todo}</li>
 {/each}
 </ol>
-
+{:else}
+    Nincs bejelentkezve
+{/if}
 <style>
 ol {
   display: inline-block;

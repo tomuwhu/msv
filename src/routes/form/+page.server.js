@@ -1,8 +1,15 @@
 import * as todos from '$lib/server/todos';
 import * as auth from '$lib/server/auth';
+import { user } from '$lib/server/db/schema.js';
 
 export const load = (event) => {
+    if (!event.locals.user) {
+        return {
+            todolist: []
+        }
+    }
     return {
+        user: event.locals.user,
         todolist: todos.getTodos(event.locals.user.id)
     }
 }
