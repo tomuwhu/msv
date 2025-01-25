@@ -10,6 +10,6 @@ export const actions = {
         const data = await request.formData()
 		const x1 = data.get('x1')
         console.log(x1)
-        
+        x++
 	}
 }
