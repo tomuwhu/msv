@@ -5,7 +5,10 @@ export async function getTodos(userId) {
     if (!userId) {
         return []
     }
-    const result = await db.select().from(table.todos).orderBy(table.todos.todo)
+    const result = await db.select({todos: table.todos, uid: table.user.id, user: table.user.username})
+        .from(table.todos)
+        .leftJoin(table.user, eq(table.todos.userId, table.user.id))
+        .orderBy(table.todos.todo)   
     return result
 }
 

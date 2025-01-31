@@ -15,9 +15,9 @@ export const session = mysqlTable("session", {
 
 export const todos = mysqlTable("todos", {
     id: bigint('id', {
-		mode: 'number',
-		unsigned: true,
-	})
+            mode: 'number',
+            unsigned: true,
+	    })
 		.notNull()
 		.autoincrement()
 		.primaryKey()

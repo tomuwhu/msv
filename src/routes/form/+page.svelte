@@ -28,13 +28,20 @@
 {#each tdl as item}
     <li>
         <form class="del" method="post" action="?/update">
-            <input type="hidden" name="id" value={item.id}>
-            <input class="todo" name="v" type="text" value={item.todo}>
+            {item.user}
+            <input type="hidden" name="id" value={item.todos.id}>
+            {#if item.uid == data.user.id}
+                <input class="todo" name="v" type="text" value={item.todos.todo}>
+            {:else}
+                <input class="todo h" name="v" type="text" value={item.todos.todo} disabled>
+            {/if}
         </form>
+        {#if item.uid == data.user.id}
         <form class="del" method="post" action="?/delete">
-            <input type="hidden" name="id" value={item.id}>
+            <input type="hidden" name="id" value={item.todos.id}>
             <input class="del" type="submit" value="🗑">
         </form>
+        {/if}
     </li>
 {/each}
 </ol>
@@ -57,12 +64,16 @@ input.todo {
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
 }
+input.todo.h {
+    font-style: italic;
+    color: rgb(74, 178, 178);
+}
 input.todo:hover {
     filter: drop-shadow(1px 1px 4px rgb(176, 138, 138));
 }
 ol {
   display: inline-block;
-  width: 300px;
+  width: 410px;
   background-color: rgb(206, 249, 235); 
   padding: 3px;
   margin: 7px;
@@ -71,6 +82,7 @@ ol {
   font-family: 'Courier New', Courier, monospace;
 }
 li {
+    width: 400px;
     list-style-type:upper-roman;
     padding: 1px;
     margin: 3px;
