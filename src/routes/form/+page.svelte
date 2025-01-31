@@ -17,12 +17,12 @@
     onMount(() => x())
 </script>
 {#if data.user}
-<h1>Todolist</h1>
+<h1>Bejegyzések (<span>~ {data.user?.username} ~</span>)</h1>
 <form method="post" action="?/new">
     <input 
         class={fv ? 'green' : 'red'} 
         name="x1" bind:value={i1}>
-    <input class="del" disabled={!fv} type="submit" value="📌">
+    <input placeholder="Új bejegyzés" class="del" disabled={!fv} type="submit" value="📌">
 </form>
 <ol>
 {#each tdl as item}
@@ -49,6 +49,14 @@
     Nincs bejelentkezve
 {/if}
 <style>
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+h1 span {
+    color: rgb(74, 178, 178);
+}
 form.del {
     display: inline-block;
 }
