@@ -10,9 +10,9 @@
     var tdl = $state([])
     const x = async () => {
         tdl = await data.todolist
-        console.log(
+        /* console.log(
          $state.snapshot(tdl)
-        )
+        ) */
     }
     onMount(() => x())
 </script>
@@ -20,10 +20,9 @@
 <h1>Todolist</h1>
 <form method="post" action="?/new">
     <input 
-        class={i1 && i1.length > 6 ? 'green' : 'red'} 
+        class={fv ? 'green' : 'red'} 
         name="x1" bind:value={i1}>
-    <br>
-    <input disabled={!fv} type="submit" value="Elküld">
+    <input class="del" disabled={!fv} type="submit" value="📌">
 </form>
 <ol>
 {#each tdl as item}
