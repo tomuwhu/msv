@@ -1,5 +1,6 @@
 <script>
     let { data } = $props();
+    let sound = $state({})
 </script>
 <h1>Cica
     (<span>
@@ -12,7 +13,26 @@
 </h1>
 
 {#if data.user}
-    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRLM_YMOn41npXKC5fX-TSRfe20jO-nK1cfON36eskj5100UzlH4JMmJVsjNYxZPV4R0vw6DHIw0dqN-osUB5Iw7Q" alt="cica">
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+    <!-- svelte-ignore event_directive_deprecated -->
+    <img on:click={async () => {
+        sound = {}
+        let x = await fetch('/api', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                action: 'cica'
+            })
+        })
+        sound = await x.json();
+    }} 
+    src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRLM_YMOn41npXKC5fX-TSRfe20jO-nK1cfON36eskj5100UzlH4JMmJVsjNYxZPV4R0vw6DHIw0dqN-osUB5Iw7Q"
+    alt="cica">
+    <hr>
+    {sound.animal}: {sound.message}
 {/if}
 <style>
 h1 {
@@ -28,6 +48,7 @@ span.err {
     font-size: 25px;
 }
 img {
+    cursor: pointer;
     width: 600px;
     border-radius: 25px;
     box-shadow: 4px 4px 14px rgb(58, 16, 16);
