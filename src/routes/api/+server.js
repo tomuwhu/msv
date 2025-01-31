@@ -1,6 +1,6 @@
 import * as table from '$lib/server/db/schema';
 import { db } from '$lib/server/db';
-
+import { eq } from 'drizzle-orm';
 import { json } from '@sveltejs/kit';
 
 export const POST = async ({ request }) => {
@@ -9,5 +9,10 @@ export const POST = async ({ request }) => {
 };
 
 export const GET = async () => {
-    return json({ animal: 'Dog', message: 'Woof', method: 'GET' });
+    const result = await db
+        .select({text: table.todos.todo, author: table.user.username})
+        .from(table.todos)
+        .leftJoin(table.user, eq(table.todos.userId, table.user.id))
+        .orderBy(table.todos.todo)   
+    return json(result);
 };
