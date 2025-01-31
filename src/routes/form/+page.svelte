@@ -30,11 +30,11 @@
     <li>
         <form class="del" method="post" action="?/update">
             <input type="hidden" name="id" value={item.id}>
-            <input name="v" type="text" value={item.todo}>
+            <input class="todo" name="v" type="text" value={item.todo}>
         </form>
         <form class="del" method="post" action="?/delete">
             <input type="hidden" name="id" value={item.id}>
-            <input class="del" type="submit" value="🗑 {item.id}">
+            <input class="del" type="submit" value="🗑">
         </form>
     </li>
 {/each}
@@ -53,21 +53,29 @@ input.del {
 input.del:hover {
     filter: drop-shadow(1px 1px 4px rgb(176, 138, 138));
 }
+input.todo {
+    all: unset;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+}
+input.todo:hover {
+    filter: drop-shadow(1px 1px 4px rgb(176, 138, 138));
+}
 ol {
   display: inline-block;
   width: 300px;
-  background-color: aquamarine; 
+  background-color: rgb(206, 249, 235); 
   padding: 3px;
   margin: 7px;
   border-radius: 5px;
   box-shadow: 1px 1px 4px inset black;
+  font-family: 'Courier New', Courier, monospace;
 }
 li {
     list-style-type:upper-roman;
     padding: 1px;
     margin: 3px;
     margin-left: 57px;
-    background-color: white;
 }
 input.green {
     background-color: rgb(165, 217, 165);
