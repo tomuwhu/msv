@@ -13,8 +13,7 @@
 </h1>
 
 {#if data.user}
-    <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
-    <img onkeyUp={this.handleKeyUp} onclick={async () => {
+    <img onkeyup={this.handleKeyUp} onclick={async () => {
         sound = {}
         let x = await fetch('/api', {
             method: 'POST',
@@ -31,7 +30,7 @@
         }, 1000);
     }} 
     src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRLM_YMOn41npXKC5fX-TSRfe20jO-nK1cfON36eskj5100UzlH4JMmJVsjNYxZPV4R0vw6DHIw0dqN-osUB5Iw7Q"
-    alt="cica">
+    alt="cica" role="presentation">
     <hr>
     {sound.animal}: {sound.message}
 {/if}
