@@ -5,19 +5,19 @@
     afterUpdate(() => url = $page.url.pathname)
     const menu = [
         {
-            name: 'Home',
+            name: 'Home - Kezdőoldal',
             href: '/'
         },
         {
-            name: 'Lucia',
+            name: 'Lucia (Login / Registration)',
             href: '/demo/lucia'
         },
         {
-            name: 'Cica',
+            name: 'Cat - Cica',
             href: '/cica'
         },
         {   
-            name: 'Űrlap példa',
+            name: 'Drizzle példa (example)',
             href: '/form'
         }
     ]
@@ -25,7 +25,10 @@
 </script>
 <div class="menu">
     {#each menu as item}
-        <a class={item.href === url || item.href+"/login" === url ? 'active' : ''} href={item.href}>{item.name} ({item.href})</a>
+        <a class={item.href === url || item.href+"/login" === url ? 'active' : ''} href={item.href}>
+            {item.name} 
+            <!-- ({item.href}) -->
+        </a>
     {/each}
 </div>
 <div class="container">
