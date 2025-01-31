@@ -10,15 +10,15 @@
     var tdl = $state([])
     const x = async () => {
         tdl = await data.todolist
-        /* console.log(
+        console.log(
          $state.snapshot(tdl)
-        ) */ 
+        )
     }
     onMount(() => x())
 </script>
 {#if data.user}
 <h1>Todolist</h1>
-<form method="post">
+<form method="post" action="?/new">
     <input 
         class={i1 && i1.length > 6 ? 'green' : 'red'} 
         name="x1" bind:value={i1}>
@@ -27,13 +27,32 @@
 </form>
 <ol>
 {#each tdl as item}
-    <li>{item.todo}</li>
+    <li>
+        <form class="del" method="post" action="?/update">
+            <input type="hidden" name="id" value={item.id}>
+            <input name="v" type="text" value={item.todo}>
+        </form>
+        <form class="del" method="post" action="?/delete">
+            <input type="hidden" name="id" value={item.id}>
+            <input class="del" type="submit" value="🗑 {item.id}">
+        </form>
+    </li>
 {/each}
 </ol>
 {:else}
     Nincs bejelentkezve
 {/if}
 <style>
+form.del {
+    display: inline-block;
+}
+input.del {
+    all: unset;
+    cursor: pointer;
+}
+input.del:hover {
+    filter: drop-shadow(1px 1px 4px rgb(176, 138, 138));
+}
 ol {
   display: inline-block;
   width: 300px;

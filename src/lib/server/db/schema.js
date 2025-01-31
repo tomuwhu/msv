@@ -1,4 +1,4 @@
-import { mysqlTable, serial, text, int, varchar, datetime, date } from 'drizzle-orm/mysql-core';
+import { mysqlTable, bigint, text, int, varchar, datetime, date } from 'drizzle-orm/mysql-core';
 
 export const user = mysqlTable('user', {
     id: varchar('id', { length: 255 }).primaryKey(),
@@ -14,6 +14,14 @@ export const session = mysqlTable("session", {
 });
 
 export const todos = mysqlTable("todos", {
+    id: bigint('id', {
+		mode: 'number',
+		unsigned: true,
+	})
+		.notNull()
+		.autoincrement()
+		.primaryKey()
+		.unique(),
     userId: varchar('user_id', { length: 255 }).notNull().references(() => user.id),
     todo: text('todo').notNull(),
     date: datetime('date').notNull().default(new Date())
