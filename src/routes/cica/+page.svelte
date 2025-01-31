@@ -13,10 +13,8 @@
 </h1>
 
 {#if data.user}
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-    <!-- svelte-ignore event_directive_deprecated -->
-    <img on:click={async () => {
+    <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+    <img onkeyUp={this.handleKeyUp} onclick={async () => {
         sound = {}
         let x = await fetch('/api', {
             method: 'POST',
