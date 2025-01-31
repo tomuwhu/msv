@@ -77,6 +77,15 @@ li {
     margin: 3px;
     margin-left: 57px;
 }
+input.green, input.red {
+    all: unset;
+    text-align: left;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px inset black;
+    font-family: 'Courier New', Courier, monospace;
+}
 input.green {
     background-color: rgb(165, 217, 165);
 }
