@@ -15,14 +15,11 @@ export async function addTodo(userId, todo) {
 }
 
 export async function deleteTodo(id) {
-    console.log('d', id)
     const result = await db.delete(table.todos).where(eq(table.todos.id, id))
     return result
 }
 
 export async function updateTodo(id, todo) {
-    console.log('u', id, todo);
-    
     const result = await db.update(table.todos).set({ todo }).where(eq(table.todos.id, id))
     return result
 }
